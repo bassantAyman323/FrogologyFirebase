@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "515398345250",
+    "project_id": "frogologyfinalinshallah",
+    "storage_bucket": "frogologyfinalinshallah.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515398345250:android:e4146eceac2f531c46a07b",
+        "android_client_info": {
+          "package_name": "com.example.graduationproj1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "515398345250-c19ij6revso3kens9hkqnupjcn9uo29j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.graduationproj1",
+            "certificate_hash": "666f71d04c6eab14c3fbcbaee34c4eb1fc0cb8bb"
+
+          }
+        },
+        {
+          "client_id": "515398345250-ou9ic7jjc4f8qcaa7t33l10iqsv80qgf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7H6TU0LjXDwktn8MITtooBjpIv-gf6Ow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "515398345250-ou9ic7jjc4f8qcaa7t33l10iqsv80qgf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
