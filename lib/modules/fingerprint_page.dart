@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduationproj1/api/local_auth_api.dart';
 import 'package:graduationproj1/localization/demo_localization.dart';
 import 'package:graduationproj1/main.dart';
+import 'package:graduationproj1/modules/auth_service.dart';
 import 'package:graduationproj1/modules/home_page.dart';
 import 'package:graduationproj1/modules/registration.dart';
 import 'package:graduationproj1/shared/components/components.dart';
@@ -130,57 +131,59 @@ class _FingerprintPageState extends State<FingerprintPage> {
                             String email = emailController.text;
                             String pass = passwordController.text;
                             if (formKey.currentState.validate()) {
-                              try{
-                                UserCredential user=await FirebaseAuth.instance.signInWithEmailAndPassword(
-                                    email: emailController.text, password: passwordController.text);
-                                print(user);
-
-                              }on FirebaseAuthException catch (e){
-                                if(e.code=='user-not-found'){
-                                  print("no user with this data");
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return AlertDialog(
-                                        title: const Text("no user with this data"),
-                                        content: const Text("no user with this data"),
-                                        actions: <Widget>[
-                                          new FlatButton(
-                                            child: const Text("OK"),
-                                            onPressed: () {
-                                              Navigator.of(context).pop();
-                                            },
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  );
-                                }else if(e.code=='wrong-password'){
-                                  print("wrong pass");
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return AlertDialog(
-                                        title: const Text("wrong pass"),
-                                        content: const Text("User was successfully created!"),
-                                        actions: <Widget>[
-                                          new FlatButton(
-                                            child: const Text("OK"),
-                                            onPressed: () {
-                                              Navigator.of(context).pop();
-                                            },
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  );
-
-
-                                }
-                              }catch(e){print(e);
-
-
-                              }
+                              // try{
+                              //   UserCredential user=await FirebaseAuth.instance.signInWithEmailAndPassword(
+                              //       email: emailController.text, password: passwordController.text);
+                              //   print(user);
+                              //
+                              // }on FirebaseAuthException catch (e){
+                              //   if(e.code=='user-not-found'){
+                              //     print("no user with this data");
+                              //     showDialog(
+                              //       context: context,
+                              //       builder: (BuildContext context) {
+                              //         return AlertDialog(
+                              //           title: const Text("no user with this data"),
+                              //           content: const Text("no user with this data"),
+                              //           actions: <Widget>[
+                              //             new FlatButton(
+                              //               child: const Text("OK"),
+                              //               onPressed: () {
+                              //                 Navigator.of(context).pop();
+                              //               },
+                              //             ),
+                              //           ],
+                              //         );
+                              //       },
+                              //     );
+                              //   }else if(e.code=='wrong-password'){
+                              //     print("wrong pass");
+                              //     showDialog(
+                              //       context: context,
+                              //       builder: (BuildContext context) {
+                              //         return AlertDialog(
+                              //           title: const Text("wrong pass"),
+                              //           content: const Text("User was successfully created!"),
+                              //           actions: <Widget>[
+                              //             new FlatButton(
+                              //               child: const Text("OK"),
+                              //               onPressed: () {
+                              //                 Navigator.of(context).pop();
+                              //               },
+                              //             ),
+                              //           ],
+                              //         );
+                              //       },
+                              //     );
+                              //
+                              //
+                              //   }
+                              // }catch(e){print(e);
+                              //
+                              //
+                              // }
+                              AuthServices().signIn(emailController.text, passwordController.text
+                              );
                               navigateReplace(context, HomePage());
                               logindata.setBool('login', false);
                               logindata.setString('email', email);

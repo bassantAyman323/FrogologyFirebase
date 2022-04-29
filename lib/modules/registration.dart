@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:graduationproj1/localization/demo_localization.dart';
 import 'package:graduationproj1/main.dart';
+import 'package:graduationproj1/modules/auth_service.dart';
+import 'package:graduationproj1/modules/db_service.dart';
 import 'package:graduationproj1/modules/fingerprint_page.dart';
+import 'package:graduationproj1/modules/users.dart';
 import 'package:graduationproj1/shared/components/components.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
@@ -278,19 +281,21 @@ class _RegistrationState extends State<Registration> {
                         // String email = emailController.text;
                         // String pass = passwordController.text;
                         if (formKey.currentState.validate()) {
-                          try{
-                            UserCredential user=await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text,
-                                password: passwordController.text);
-                            print(user);
-                          }on FirebaseAuthException catch (e){
-                            if(e.code=='weak-password'){
-                              print("too weak pass");
-                            }else if(e.code=='email-already-in-use'){
-                              print("in use email");
-                            }
-                          }catch(e){print(e);}
-                          _auth.createUserWithEmailAndPassword(
-                              email: email, password: password);
+                          // try{
+                          //   UserCredential user=await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text,
+                          //       password: passwordController.text);
+                          //
+                          //   print(user);
+                          // }on FirebaseAuthException catch (e){
+                          //   if(e.code=='weak-password'){
+                          //     print("too weak pass");
+                          //   }else if(e.code=='email-already-in-use'){
+                          //     print("in use email");
+                          //   }
+                          // }catch(e){print(e);}
+                          // _auth.createUserWithEmailAndPassword(
+                          //     email: email, password: password);
+                          await AuthServices().signUp(nameController.text, emailController.text, passwordController.text);
 
                           doUserRegistration();
                           registerdata.setBool('register', false);

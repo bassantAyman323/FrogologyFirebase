@@ -66,16 +66,6 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.google.ar:core:1.28.0'
-    // Alternatively, use ArSceneView without the UX dependency.
-    implementation 'com.google.ar.sceneform:core:1.8.0'
-    // Provides ArFragment, and other UX resources.
-    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.8.0'
+
 }
-apply plugin : 'com.google.ar.sceneform.plugin'
-sceneform.asset(
-        'sampledata/12268_banjofrog_v1_L3.obj',
-        'default',
-        'sampledata/12268_banjofrog_v1_L3.sfa',
-        'src/main/assets/Toon'
-)
+
